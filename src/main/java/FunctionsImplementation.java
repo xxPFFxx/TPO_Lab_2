@@ -26,15 +26,32 @@ public class FunctionsImplementation {
 
 
     static double sec(double x, double eps){
-        return 1 / cos(x, eps);
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return 1 / cos(x, eps);
+        }
+        else {
+            return Double.NaN;
+        }
     }
 
     static double tan(double x, double eps){
-        return sin(x, eps) / cos(x, eps);
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return sin(x, eps) / cos(x, eps);
+        }
+        else {
+            return Double.NaN;
+        }
+
     }
 
     static double cot(double x, double eps){
-        return cos(x, eps) / sin(x, eps);
+        if (x % Math.PI != 0){
+            return cos(x, eps) / sin(x, eps);
+        }
+        else {
+            return Double.NaN;
+        }
+
     }
 
     static double ln(double x, double eps){

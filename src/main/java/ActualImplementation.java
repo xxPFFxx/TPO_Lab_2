@@ -12,15 +12,31 @@ public class ActualImplementation {
 
 
     static double sec(double x, double eps){
-        return 1/Math.cos(x);
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return 1 / Math.cos(x);
+        }
+        else {
+            return Double.NaN;
+        }
     }
 
     static double tan(double x, double eps){
-        return Math.tan(x);
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return Math.tan(x);
+        }
+        else {
+            return Double.NaN;
+        }
+
     }
 
     static double cot(double x, double eps){
-        return 1/Math.sin(x);
+        if (x % Math.PI != 0){
+            return Math.cos(x)/Math.sin(x);
+        }
+        else {
+            return Double.NaN;
+        }
     }
 
     static double ln(double x, double eps){

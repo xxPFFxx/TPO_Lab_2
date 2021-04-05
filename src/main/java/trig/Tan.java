@@ -18,4 +18,12 @@ public class Tan {
         }
 
     }
+    public double stubCalculate(double x){
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return Math.tan(x);
+        }
+        else {
+            return Double.NaN;
+        }
+    }
 }

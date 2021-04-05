@@ -24,4 +24,7 @@ public class Sin {
         }
         return newResult;
     }
+    public double stubCalculate(double x){
+        return Math.sin(x);
+    }
 }

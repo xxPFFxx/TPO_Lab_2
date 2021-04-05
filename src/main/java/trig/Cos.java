@@ -10,4 +10,7 @@ public class Cos {
     public double calculate(double x){
         return 1 - 2 * Math.pow(sin.calculate(x / 2),2);
     }
+    public double stubCalculate(double x){
+        return Math.cos(x);
+    }
 }

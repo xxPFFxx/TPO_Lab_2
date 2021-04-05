@@ -18,4 +18,12 @@ public class Cot {
         }
 
     }
+    public double stubCalculate(double x){
+        if (x % Math.PI != 0){
+            return Math.cos(x)/Math.sin(x);
+        }
+        else {
+            return Double.NaN;
+        }
+    }
 }

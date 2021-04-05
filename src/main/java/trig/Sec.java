@@ -15,4 +15,12 @@ public class Sec {
             return Double.NaN;
         }
     }
+    public double stubCalculate(double x){
+        if ((x-Math.PI/2) % Math.PI != 0){
+            return 1 / Math.cos(x);
+        }
+        else {
+            return Double.NaN;
+        }
+    }
 }

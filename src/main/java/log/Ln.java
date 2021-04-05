@@ -22,4 +22,8 @@ public class Ln {
         }
         return 2 * newResult;
     }
+
+    public double stubCalculate(double x){
+        return Math.log(x);
+    }
 }

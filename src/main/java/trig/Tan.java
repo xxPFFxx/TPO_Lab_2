@@ -19,6 +19,11 @@ public class Tan {
         this.cos = cos;
         this.sin = new Sin(eps);
     }
+    public Tan(double eps,Sin sin, Cos cos){
+        this.eps = eps;
+        this.cos = cos;
+        this.sin = sin;
+    }
     public double calculate(double x){
         if ((x-Math.PI/2) % Math.PI != 0){
             return sin.calculate(x) / cos.calculate(x);

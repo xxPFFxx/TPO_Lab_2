@@ -10,7 +10,7 @@ import trig.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IntegrationTest {
-    final double eps = 0.00001;
+    final double eps = 0.0001;
 
     static Sin sinStub = Mockito.mock(Sin.class);
     static Cos cosStub = Mockito.mock(Cos.class);
@@ -115,4 +115,98 @@ public class IntegrationTest {
         assertEquals(log10.stubCalculate(Math.PI/2), log10.calculate(Math.PI/2),eps);
         assertEquals(log10.stubCalculate(Math.PI/4), log10.calculate(Math.PI/4),eps);
     }
+
+    @Test
+    public void testWithAllStubs(){
+        FunctionSystem functionSystem = new FunctionSystem(sinStub, cosStub, secStub, tanStub, cotStub, lnStub, log2Stub, log3Stub, log10Stub);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(142.42134480542413, functionSystem.calculate(-2.25,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+    }
+    @Test
+    public void testWithSinCosLnLogStubs(){
+        Sec sec = new Sec(eps, cosStub);
+        Tan tan = new Tan(eps, sinStub, cosStub);
+        Cot cot = new Cot(eps, sinStub, cosStub);
+        FunctionSystem functionSystem = new FunctionSystem(sinStub, cosStub, sec, tan, cot, lnStub, log2Stub, log3Stub, log10Stub);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+    }
+    @Test
+    public void testWithSinLnLogStubs(){
+        Cos cos = new Cos(eps, sinStub);
+        Sec sec = new Sec(eps);
+        Tan tan = new Tan(eps, sinStub);
+        Cot cot = new Cot(eps, sinStub);
+        FunctionSystem functionSystem = new FunctionSystem(sinStub, cos, sec, tan, cot, lnStub, log2Stub, log3Stub, log10Stub);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(142.42134480542413, functionSystem.calculate(-2.25,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+    }
+
+    @Test
+    public void testWithLnLogStubs(){
+        Sin sin = new Sin(eps);
+        Cos cos = new Cos(eps);
+        Sec sec = new Sec(eps);
+        Tan tan = new Tan(eps);
+        Cot cot = new Cot(eps);
+        FunctionSystem functionSystem = new FunctionSystem(sin, cos, sec, tan, cot, lnStub, log2Stub, log3Stub, log10Stub);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(142.42134480542413, functionSystem.calculate(-2.25,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+    }
+
+    @Test
+    public void testWithLnStubs(){
+        Sin sin = new Sin(eps);
+        Cos cos = new Cos(eps);
+        Sec sec = new Sec(eps);
+        Tan tan = new Tan(eps);
+        Cot cot = new Cot(eps);
+        Log log2 = new Log(2,eps,lnStub);
+        Log log3 = new Log(3,eps,lnStub);
+        Log log10 = new Log(10,eps,lnStub);
+        FunctionSystem functionSystem = new FunctionSystem(sin, cos, sec, tan, cot, lnStub, log2, log3, log10);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(142.42134480542413, functionSystem.calculate(-2.25,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+    }
+
+    @Test
+    public void testWithNoStubs(){
+        Sin sin = new Sin(eps);
+        Cos cos = new Cos(eps);
+        Sec sec = new Sec(eps);
+        Tan tan = new Tan(eps);
+        Cot cot = new Cot(eps);
+        Ln ln = new Ln(eps);
+        Log log2 = new Log(2,eps);
+        Log log3 = new Log(3,eps);
+        Log log10 = new Log(10,eps);
+        FunctionSystem functionSystem = new FunctionSystem(sin, cos, sec, tan, cot, ln, log2, log3, log10);
+        assertEquals(109.83845336921013, functionSystem.calculate(-1,eps), eps);
+        assertEquals(64.48368654759, functionSystem.calculate(-1.5,eps), eps);
+        assertEquals(142.42134480542413, functionSystem.calculate(-2.25,eps), eps);
+        assertEquals(1.39024, functionSystem.calculate(2.5,eps), eps);
+        assertEquals(3.5921220, functionSystem.calculate(3,eps), eps);
+        assertEquals(12.39810334, functionSystem.calculate(4,eps), eps);
+
+    }
+
 }

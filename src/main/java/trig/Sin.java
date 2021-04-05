@@ -8,6 +8,7 @@ public class Sin {
     public Sin(double eps){
         this.eps = eps;
     }
+
     public double calculate(double x){
         double result= Double.MAX_VALUE;
         double n = 1.0;
@@ -26,5 +27,13 @@ public class Sin {
     }
     public double stubCalculate(double x){
         return Math.sin(x);
+    }
+
+    public double getEps() {
+        return eps;
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
     }
 }

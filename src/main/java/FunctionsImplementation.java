@@ -2,7 +2,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class FunctionsImplementation {
-    static double  sin(double x, double eps) {
+    double  sin(double x, double eps) {
 
         double result= Double.MAX_VALUE;
         double n = 1.0;
@@ -20,12 +20,12 @@ public class FunctionsImplementation {
         return newResult;
     }
 
-    static double cos(double x, double eps){
+    double cos(double x, double eps){
         return 1 - 2 * Math.pow(sin(x / 2, eps),2);
     }
 
 
-    static double sec(double x, double eps){
+    double sec(double x, double eps){
         if ((x-Math.PI/2) % Math.PI != 0){
             return 1 / cos(x, eps);
         }
@@ -34,7 +34,7 @@ public class FunctionsImplementation {
         }
     }
 
-    static double tan(double x, double eps){
+    double tan(double x, double eps){
         if ((x-Math.PI/2) % Math.PI != 0){
             return sin(x, eps) / cos(x, eps);
         }
@@ -44,7 +44,7 @@ public class FunctionsImplementation {
 
     }
 
-    static double cot(double x, double eps){
+    double cot(double x, double eps){
         if (x % Math.PI != 0){
             return cos(x, eps) / sin(x, eps);
         }
@@ -54,9 +54,9 @@ public class FunctionsImplementation {
 
     }
 
-    static double ln(double x, double eps){
+    double ln(double x, double eps){
         if (x < 0) return Double.NaN;
-
+        if (x == 0) return Double.NEGATIVE_INFINITY;
         double result = Double.MAX_VALUE;
         double n = 1.0;
         double newResult = 0.0;
@@ -69,13 +69,13 @@ public class FunctionsImplementation {
         return 2 * newResult;
     }
 
-    static double log_2(double x, double eps){
+    double log_2(double x, double eps){
         return ln(x, eps) / ln(2.0, eps);
     }
-    static double log_3(double x, double eps){
+    double log_3(double x, double eps){
         return ln(x, eps) / ln(3.0, eps);
     }
-    static double log_10(double x, double eps){
+    double log_10(double x, double eps){
         return ln(x, eps) / ln(10.0, eps);
     }
 }

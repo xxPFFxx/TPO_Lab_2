@@ -1,7 +1,8 @@
 public class Test {
     public static void main(String[] args) {
-        System.out.println(FunctionsImplementation.sin(Math.PI/2, 0.0001));
-        System.out.println(FunctionsImplementation.ln(Math.E, 0.0001));
+        FunctionsImplementation functionsImplementation = new FunctionsImplementation();
+        System.out.println(functionsImplementation.sin(Math.PI/2, 0.0001));
+        System.out.println(functionsImplementation.ln(Math.E, 0.0001));
         System.out.println(FunctionSystem.functionSystem(-2, 0.0001));
     }
 }

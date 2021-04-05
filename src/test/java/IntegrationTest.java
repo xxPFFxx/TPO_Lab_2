@@ -2,6 +2,8 @@ import log.Ln;
 import log.Log;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
 import trig.*;
 
@@ -57,12 +59,60 @@ public class IntegrationTest {
         Mockito.when(log10Stub.calculate(Mockito.anyDouble())).thenAnswer(i -> Math.log((Double) i.getArguments()[0]) / Math.log(10));
     }
     @Test
-    public void easyTest(){
-        //sinStub.setEps(eps);
+    public void testCos(){
         Cos cos = new Cos(eps, sinStub);
-        //assertEquals(0, cos.calculate(Math.PI/2),eps);
-        //assertEquals(1, sinStub.calculate(Math.PI/2),eps);
-        System.out.println(secStub.calculate(Math.PI/2));
-
+        assertEquals(cos.stubCalculate(Math.PI), cos.calculate(Math.PI),eps);
+        assertEquals(cos.stubCalculate(Math.PI/2), cos.calculate(Math.PI/2),eps);
+        assertEquals(cos.stubCalculate(Math.PI/4), cos.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testSec(){
+        Sec sec = new Sec(eps, cosStub);
+        assertEquals(sec.stubCalculate(Math.PI), sec.calculate(Math.PI),eps);
+        assertEquals(sec.stubCalculate(Math.PI/2), sec.calculate(Math.PI/2),eps);
+        assertEquals(sec.stubCalculate(Math.PI/4), sec.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testTanWithSin(){
+        Tan tan = new Tan(eps, sinStub);
+        assertEquals(tan.stubCalculate(Math.PI), tan.calculate(Math.PI),eps);
+        assertEquals(tan.stubCalculate(Math.PI/2), tan.calculate(Math.PI/2),eps);
+        assertEquals(tan.stubCalculate(Math.PI/4), tan.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testTanWithCos(){
+        Tan tan = new Tan(eps, cosStub);
+        assertEquals(tan.stubCalculate(Math.PI), tan.calculate(Math.PI),eps);
+        assertEquals(tan.stubCalculate(Math.PI/2), tan.calculate(Math.PI/2),eps);
+        assertEquals(tan.stubCalculate(Math.PI/4), tan.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testCotWithSin(){
+        Cot cot = new Cot(eps, sinStub);
+        assertEquals(cot.stubCalculate(Math.PI), cot.calculate(Math.PI),eps);
+        assertEquals(cot.stubCalculate(Math.PI/2), cot.calculate(Math.PI/2),eps);
+        assertEquals(cot.stubCalculate(Math.PI/4), cot.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testCotWithCos(){
+        Cot cot = new Cot(eps, sinStub);
+        assertEquals(cot.stubCalculate(Math.PI), cot.calculate(Math.PI),eps);
+        assertEquals(cot.stubCalculate(Math.PI/2), cot.calculate(Math.PI/2),eps);
+        assertEquals(cot.stubCalculate(Math.PI/4), cot.calculate(Math.PI/4),eps);
+    }
+    @Test
+    public void testLogWithLn(){
+        Log log2 = new Log(2,eps, lnStub);
+        Log log3 = new Log(3,eps, lnStub);
+        Log log10 = new Log(10,eps, lnStub);
+        assertEquals(log2.stubCalculate(Math.PI), log2.calculate(Math.PI),eps);
+        assertEquals(log2.stubCalculate(Math.PI/2), log2.calculate(Math.PI/2),eps);
+        assertEquals(log2.stubCalculate(Math.PI/4), log2.calculate(Math.PI/4),eps);
+        assertEquals(log3.stubCalculate(Math.PI), log3.calculate(Math.PI),eps);
+        assertEquals(log3.stubCalculate(Math.PI/2), log3.calculate(Math.PI/2),eps);
+        assertEquals(log3.stubCalculate(Math.PI/4), log3.calculate(Math.PI/4),eps);
+        assertEquals(log10.stubCalculate(Math.PI), log10.calculate(Math.PI),eps);
+        assertEquals(log10.stubCalculate(Math.PI/2), log10.calculate(Math.PI/2),eps);
+        assertEquals(log10.stubCalculate(Math.PI/4), log10.calculate(Math.PI/4),eps);
     }
 }

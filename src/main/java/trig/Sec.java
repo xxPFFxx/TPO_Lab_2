@@ -7,6 +7,10 @@ public class Sec {
         this.eps = eps;
         this.cos = new Cos(eps);
     }
+    public Sec(double eps, Cos cos){
+        this.eps = eps;
+        this.cos = cos;
+    }
     public double calculate(double x){
         if ((x-Math.PI/2) % Math.PI != 0){
             return 1 / cos.calculate(x);

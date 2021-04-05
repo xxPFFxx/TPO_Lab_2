@@ -9,6 +9,16 @@ public class Cot {
         this.cos = new Cos(eps);
         this.sin = new Sin(eps);
     }
+    public Cot(double eps, Sin sin){
+        this.eps = eps;
+        this.cos = new Cos(eps);
+        this.sin = sin;
+    }
+    public Cot(double eps, Cos cos){
+        this.eps = eps;
+        this.cos = cos;
+        this.sin = new Sin(eps);
+    }
     public double calculate(double x){
         if (x % Math.PI != 0){
             return cos.calculate(x) / sin.calculate(x);

@@ -9,6 +9,11 @@ public class Log {
         this.ln = new Ln(eps);
         this.base = base;
     }
+    public Log(double base, double eps, Ln ln){
+        this.eps = eps;
+        this.ln = ln;
+        this.base = base;
+    }
     public double calculate(double x){
         if (this.base <= 0 || this.base == 1) return Double.NaN;
         return ln.calculate(x) / ln.calculate(base);

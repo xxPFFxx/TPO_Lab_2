@@ -1,12 +1,22 @@
+import log.Ln;
+import log.Log;
+import trig.*;
 
 public class FunctionSystem {
     static double functionSystem(double x, double eps){
-        FunctionsImplementation functionsImplementation = new FunctionsImplementation();
+        Sin sin = new Sin(eps);
+        Sec sec = new Sec(eps);
+        Tan tan = new Tan(eps);
+        Cot cot = new Cot(eps);
+        Ln ln = new Ln(eps);
+        Log log2 = new Log(2, eps);
+        Log log3 = new Log(3, eps);
+        Log log10 = new Log(10, eps);
         if (x<=0){
-            return Math.pow(Math.pow(((functionsImplementation.tan(x, eps) - functionsImplementation.sec(x, eps))*functionsImplementation.sin(x, eps))*(Math.pow(functionsImplementation.cot(x, eps),2)*functionsImplementation.sec(x,eps)),2),3);
+            return Math.pow(Math.pow(((tan.calculate(x) - sec.calculate(x))* sin.calculate(x))*(Math.pow(cot.calculate(x), 2)* sec.calculate(x)),2),3);
         }
         else {
-            return Math.pow(((functionsImplementation.log_2(x,eps)*functionsImplementation.log_10(x,eps) / functionsImplementation.ln(x,eps))+Math.pow(functionsImplementation.ln(x, eps), 2)) * functionsImplementation.log_3(x, eps),2);
+            return Math.pow(((log2.calculate(x)* log10.calculate(x) / ln.calculate(x))+Math.pow(ln.calculate(x), 2)) * log3.calculate(x),2);
         }
     }
 }

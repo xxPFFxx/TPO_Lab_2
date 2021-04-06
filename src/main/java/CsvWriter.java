@@ -8,14 +8,9 @@ import java.util.ArrayList;
 public class CsvWriter {
     public static void write(ArrayList<FunctionInterface> functions, double start, double end, double step) throws IOException {
         double res;
-        File file = new File("test.csv");
-
-        // Создание файла
+        File file = new File("src/main/resources/test.csv");
         file.createNewFile();
-
-        // Создание объекта FileWriter
         FileWriter writer = new FileWriter(file);
-        //FileWriter file = new FileWriter("csvOutput.csv");
         for (FunctionInterface function: functions){
             for (double x = start; x <= end; x+=step){
                 res = function.calculate(x);

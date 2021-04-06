@@ -34,7 +34,7 @@ public class Main {
         while (cycle){
             isFunc = true;
             while (isFunc){
-                System.out.println("Choose on of the functions to add: sin\n cos\n sec\n tan\n cot\n ln\n log\n funcSystem\n");
+                System.out.println("Choose on of the functions to add (type 'stop' to finish adding): sin\n cos\n sec\n tan\n cot\n ln\n log\n funcSystem\n");
                 inputFunc = in.nextLine();
                 switch (inputFunc){
                     case ("sin"):
@@ -71,9 +71,12 @@ public class Main {
                     case ("funcSystem"):
                         functions.add(functionSystem);
                         break;
-                    default:
+                    case ("stop"):
                         System.out.println("Function adding is over");
                         isFunc = false;
+                        break;
+                    default:
+                        System.out.println("Unknown command. If you want to finish adding - type 'stop'");
                         break;
                 }
             }
@@ -94,6 +97,8 @@ public class Main {
                 end = Double.parseDouble(params[1]);
                 step = Double.parseDouble(params[2]);
                 CsvWriter.write(functions, start, end, step);
+                System.out.println("Do you want to end the program? (Y/N)");
+                if (in.nextLine().equals("Y")) cycle = false;
         }
     }
 }

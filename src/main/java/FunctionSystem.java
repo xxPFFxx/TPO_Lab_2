@@ -3,6 +3,7 @@ import log.Log;
 import trig.*;
 
 public class FunctionSystem implements FunctionInterface {
+    private double eps;
     private Sin sin;
     private Cos cos;
     private Sec sec;
@@ -40,5 +41,10 @@ public class FunctionSystem implements FunctionInterface {
         else {
             return Math.pow(((log2.calculate(x)* log10.calculate(x) / ln.calculate(x))+Math.pow(ln.calculate(x), 2)) * log3.calculate(x),2);
         }
+    }
+
+    @Override
+    public void setEps(double eps) {
+        this.eps = eps;
     }
 }

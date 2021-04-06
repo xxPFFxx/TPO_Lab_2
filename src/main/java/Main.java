@@ -2,12 +2,13 @@ import log.Ln;
 import log.Log;
 import trig.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         double eps = 0.00001;
         boolean cycle = true;
         boolean isFunc;
@@ -56,7 +57,7 @@ public class Main {
                         break;
                     case ("log"):
                         System.out.println("Enter base of log");
-                        base = in.nextDouble();
+                        base = Double.parseDouble(in.nextLine());
                         if (base <= 0 || base == 1){
                             System.out.println("Incorrect base");
                             break;
@@ -77,7 +78,7 @@ public class Main {
                 }
             }
                 System.out.println("Enter precision");
-                try{epsInput = in.nextDouble();}
+                try{epsInput = Double.parseDouble(in.nextLine());}
                 catch (Exception e){
                     System.out.println("Enter a number");
                 }
@@ -92,7 +93,7 @@ public class Main {
                 start = Double.parseDouble(params[0]);
                 end = Double.parseDouble(params[1]);
                 step = Double.parseDouble(params[2]);
-
+                CsvWriter.write(functions, start, end, step);
         }
     }
 }

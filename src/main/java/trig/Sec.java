@@ -1,6 +1,6 @@
 package trig;
 
-public class Sec {
+public class Sec implements FunctionInterface {
     private double eps;
     private Cos cos;
     public Sec(double eps){
@@ -26,5 +26,10 @@ public class Sec {
         else {
             return Double.NaN;
         }
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
+        this.cos.setEps(eps);
     }
 }

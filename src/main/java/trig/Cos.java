@@ -1,6 +1,6 @@
 package trig;
 
-public class Cos {
+public class Cos implements FunctionInterface {
     private double eps;
     private Sin sin;
     public Cos(double eps){
@@ -24,5 +24,10 @@ public class Cos {
 
     public void setSin(Sin sin) {
         this.sin = sin;
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
+        this.sin.setEps(eps);
     }
 }

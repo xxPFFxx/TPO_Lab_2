@@ -1,9 +1,10 @@
 package trig;
 
+
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-public class Sin {
+public class Sin implements FunctionInterface {
     private double eps;
     public Sin(double eps){
         this.eps = eps;
@@ -36,4 +37,5 @@ public class Sin {
     public void setEps(double eps) {
         this.eps = eps;
     }
+
 }

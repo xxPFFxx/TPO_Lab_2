@@ -1,6 +1,6 @@
 package trig;
 
-public class Cot {
+public class Cot implements FunctionInterface {
     private double eps;
     private Cos cos;
     private Sin sin;
@@ -40,5 +40,12 @@ public class Cot {
         else {
             return Double.NaN;
         }
+    }
+
+    @Override
+    public void setEps(double eps) {
+        this.eps = eps;
+        this.sin.setEps(eps);
+        this.cos.setEps(eps);
     }
 }

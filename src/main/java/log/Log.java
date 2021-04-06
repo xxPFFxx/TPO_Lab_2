@@ -1,6 +1,8 @@
 package log;
 
-public class Log {
+import trig.FunctionInterface;
+
+public class Log implements FunctionInterface {
     private double eps;
     private Ln ln;
     private double base;
@@ -28,5 +30,10 @@ public class Log {
 
     public void setBase(double base) {
         this.base = base;
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
+        this.ln.setEps(eps);
     }
 }

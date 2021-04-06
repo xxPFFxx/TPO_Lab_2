@@ -2,7 +2,7 @@ import log.Ln;
 import log.Log;
 import trig.*;
 
-public class FunctionSystem {
+public class FunctionSystem implements FunctionInterface {
     private Sin sin;
     private Cos cos;
     private Sec sec;
@@ -25,7 +25,7 @@ public class FunctionSystem {
         this.log10 = log10;
     }
 
-    double calculate(double x, double eps){
+    public double calculate(double x){
 //        Sin sin = new Sin(eps);
 //        Sec sec = new Sec(eps);
 //        Tan tan = new Tan(eps);

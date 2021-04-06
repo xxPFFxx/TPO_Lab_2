@@ -1,9 +1,11 @@
 package log;
 
+import trig.FunctionInterface;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-public class Ln {
+public class Ln implements FunctionInterface {
     private double eps;
     public Ln(double eps){
         this.eps = eps;
@@ -25,5 +27,9 @@ public class Ln {
 
     public double stubCalculate(double x){
         return Math.log(x);
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
     }
 }

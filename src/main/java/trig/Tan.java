@@ -1,6 +1,6 @@
 package trig;
 
-public class Tan {
+public class Tan implements FunctionInterface {
     private double eps;
     private Cos cos;
     private Sin sin;
@@ -40,5 +40,11 @@ public class Tan {
         else {
             return Double.NaN;
         }
+    }
+
+    public void setEps(double eps) {
+        this.eps = eps;
+        this.sin.setEps(eps);
+        this.cos.setEps(eps);
     }
 }
